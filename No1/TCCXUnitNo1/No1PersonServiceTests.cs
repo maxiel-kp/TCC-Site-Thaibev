@@ -23,13 +23,13 @@ namespace TCCXUnitNo1
         public async Task GetList()
         {
             // Arrange
-            _repositoryMock.Setup(repo => repo.GetAllAsync()).ReturnsAsync(new List<Person>
+            _repositoryMock.Setup(repo => repo.GetAllAsync(1)).ReturnsAsync(new List<Person>
             {
                 new Person { Id = Guid.NewGuid(), FirstName = "Jane", LastName = "Smith", Address = "456 Elm St", BirthDate = new DateTime(1985, 5, 15), CreatedAt = DateTime.UtcNow }
             });
 
             // Act
-            var person = await _service.GetList();
+            var person = await _service.GetList(1);
 
             // Assert
             Assert.NotNull(person);

@@ -12,9 +12,9 @@ namespace TCC_No1_Test.Service
             _repository = repository;
         }
 
-        public async Task<List<Person>> GetList()
+        public async Task<List<Person>> GetList(int page)
         {
-            return await _repository.GetAllAsync();
+            return await _repository.GetAllAsync(page);
         }
 
         public async Task<Person?> GetById(Guid id)

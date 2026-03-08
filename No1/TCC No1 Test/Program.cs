@@ -21,7 +21,18 @@ namespace TCC_No1_Test
             builder.Services.AddScoped<IPersonService, PersonService>();
             builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngular",
+                    policy => policy
+                        .WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
+
             var app = builder.Build();
+
+            app.UseCors("AllowAngular");
 
             if (app.Environment.IsDevelopment())
             {

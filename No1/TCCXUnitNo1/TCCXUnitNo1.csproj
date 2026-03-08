@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TCC No1 Test\TCC Test.csproj" />
+    <ProjectReference Include="..\TCC No1 Test\TCC No1 Test.csproj" />
   </ItemGroup>
 
   <ItemGroup>

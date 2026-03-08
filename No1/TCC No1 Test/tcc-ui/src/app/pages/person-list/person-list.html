@@ -1,0 +1,72 @@
+<div class="page">
+
+  <div class="header">
+    IT 01-1
+  </div>
+
+  <div class="container">
+
+    <div class="toolbar">
+      <button class="btn-add" (click)="openAdd()">ADD</button>
+    </div>
+
+    <table class="person-table">
+
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>ชื่อ-สกุล</th>
+          <th>ที่อยู่</th>
+          <th>วันเกิด</th>
+          <th>อายุ</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let p of persons; let i = index">
+
+          <td>{{ i + 1 }}</td>
+
+          <td>
+            {{p.firstName}} {{p.lastName}}
+          </td>
+
+          <td>
+            {{p.address}}
+          </td>
+
+          <td>
+            {{p.birthDate | date:'dd/MM/yyyy'}}
+          </td>
+
+          <td>
+            {{getAge(p.birthDate)}}
+          </td>
+
+          <td>
+            <button class="btn-view" (click)="viewPerson(p)">
+              View
+            </button>
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <div class="pagination">
+
+      <button (click)="prevPage()">Previous</button>
+
+      <span>Page {{page}}</span>
+
+      <button (click)="nextPage()">Next</button>
+
+    </div>
+
+  </div>
+
+</div>

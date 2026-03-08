@@ -15,9 +15,9 @@ namespace TCC_No1_Test.Controllers
         }
 
         [HttpGet]
-        public async Task<List<Person>> GetList()
+        public async Task<List<Person>> GetList(int page = 1)
         {
-            return await _service.GetList();
+            return await _service.GetList(page);
         }
 
         [HttpGet("{id}")]

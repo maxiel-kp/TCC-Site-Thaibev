@@ -4,7 +4,7 @@ namespace TCC_No1_Test.Repository
 {
     public interface IPersonRepository
     {
-        Task<List<Person>> GetAllAsync();
+        Task<List<Person>> GetAllAsync(int page);
 
         Task<Person?> GetByIdAsync(Guid id);
 

@@ -1,0 +1,58 @@
+.page {
+  background: #e5e5e5;
+  padding: 40px;
+}
+
+.header {
+  background: #1a9c55;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.container {
+  background: #dcdcdc;
+  padding: 40px;
+}
+
+.toolbar {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.btn-add {
+  background: #6c8fd8;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.person-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+  .person-table th {
+    background: #00a9d6;
+    color: white;
+    padding: 8px;
+    border: 1px solid #888;
+  }
+
+  .person-table td {
+    border: 1px solid #888;
+    padding: 8px;
+    text-align: center;
+  }
+
+.btn-view {
+  background: #6c8fd8;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 6px;
+}

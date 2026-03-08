@@ -13,9 +13,13 @@ namespace TCC_No1_Test.Repository
             _dbContext = dbContext;
         }
 
-        public async Task<List<Person>> GetAllAsync()
+        public async Task<List<Person>> GetAllAsync(int page)
         {
-            return await _dbContext.Persons.ToListAsync();
+            return await _dbContext.Persons
+                .OrderBy(o => o.CreatedAt)
+                .Skip((page - 1) * 10)
+                .Take(10)
+                .ToListAsync();
         }
 
         public async Task<Person?> GetByIdAsync(Guid id)
