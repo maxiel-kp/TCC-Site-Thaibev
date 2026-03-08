@@ -1,4 +1,4 @@
-วิเคราะห์ข้อ No1
+ผมเริ่มวิเคราะห์ข้อ No1
 Functional
 - User สามารถเพิ่มข้อมูล Person
 - ระบบต้องคำนวณอายุจาก ปีปัจจุบัน - ปีเกิด
@@ -10,3 +10,24 @@ Non-Functional
 - UI ตามโจทย์กำหนด
 - Response time เร็ว
 - Data consistency
+
+หลังจากนั้นออกแบบ UX flow และ ER Diagram ผ่าน Diagram.net
+แล้วจากนั้นออกแบบ API จากนั้นจัดทำ API Specification Doc
+
+ที่นี่ก็มาเขียน API โดยเปิด visual studio 2022 แล้ว New web api (.Net)
+
+จากนั้นวางโครง Domain-driven desgin โดยยังคำนึงถึง Clean architecture
+จึงออกมาเป็น
+- Controllers
+- Data (DALs)
+- DTOs (request/response)
+- Entities (Models)
+- Repositories
+- Services
+
+ต่อมาผมนำโครงสร้างตาราง Person มาแปลงเป็น Entity ที่ class Person
+แล้วทำการ code first โดยเริ่มจากต่อ Connection string ที่ appsetting และ AppDbContext ในโฟลเดอร์ Data
+จากนั้น inherit DbContext เพิ่มเพิ่ม DbSet ให้ class person
+
+ต่อมาเปิด console แล้วใช้คำสั่ง Add-Migration InitialCreate เพื่อสร้าง snapshot 
+จากนั้นใช้คำสั่ง Update-Database เพื่อสร้างตาราง Persons ใน SqlServer ที่ต่อไว้
