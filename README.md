@@ -60,3 +60,48 @@ GetAll, GetById และ Add ซึ่ง API ตรงนี้จะมีก
 
 หลังจากนั้นผมก็เทส API ที่สร้างทั้งใส่ข้อมูลถูกและผิดตาม test case scenario ที่เกิดขึ้นเพื่อเช็คความถูกต้อง
 จากนั้นก็ทำการเขียน Unit test เพื่อความง่ายในการเทสต่อไป
+
+จากนั้นเริ่มในส่วนของ frontend ถ้าปกติอาจจะออกแบบเองผ่าน figma แต่นี่มีแบบให้แล้วเลยเริ่มจากไปที่ path ของโปรเจค
+จากนั้นสร้างโปรเจ็ค angular หรือใช้คำสั่ง ng new {ชื่อโปรเจ็คเว็บ ในที่นี้ผมใช้ tcc-ui}
+แล้วก็ไปที่โฟลเดอร์ tcc-ui แล้วทำการเพิ่ม service อาจใช้คำสั่ง ng generate service services/person เพื่อทำการดึง API
+จากนั้นแก้ใน program.cs ให้ AddCors เพื่อ AllowAngular
+
+หลังจากนั้นก็ทำการต่อ API GetAll และ Add เพื่อนำมาใช้กับ CRUD และแสดงข้อมูลในตาราง
+สร้าง Model Person สำหรับเป็นโครงในการ export ไปใช้ส่งข้อมูลต่อในส่วนของ Component
+
+Component ประกอบไปด้วย html, css และ js(ในที่นี้คือ typescript)
+ทีนี้เราก็มาดู UX flow ที่ออกแบบไว้ตอนแรกว่ามี action หรือ function อะไรใช้บ้าง
+จากนั้นก็ใช้ *ngFor ในการวนค่า persons$ โดยใช้ async และ index
+แล้วเราก็ทำการสร้าง modal สำหรับ view และ add ข้อมูล
+
+จากนั้นผมก็ทำการเปิด flag สำหรับ trigger action ต่างๆ  ได้แก่
+modal = 1;
+page = 1;
+showModal = false;
+modalMode: 'view' | 'add' = 'view';
+
+แล้้วทำการกำหนด object
+ persons$ = new BehaviorSubject<Person[]>([]);
+ selectedPerson: Person | null = null;
+ newPerson: Person = {
+   firstName: '',
+   lastName: '',
+   birthDate: '',
+   address: ''
+ };
+
+เพื่อให้สอดคล้องกับ service ที่เขียนไว้
+getAll(page: number) {
+  return this.http.get<Person[]>(
+    `${this.apiUrl}?page=${page}`
+  );
+}
+
+add(person: Person) {
+  return this.http.post<Person>(
+    `${this.apiUrl}`,
+    person
+  );
+}
+
+หลังจากประกอบ API และหน้าเว็บสำเร็จก็ทำการเทสอีกรอบ
