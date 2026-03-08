@@ -13,6 +13,7 @@
 9.
 
 ผมเริ่มวิเคราะห์ข้อ No1
+
 Functional
 - User สามารถเพิ่มข้อมูล Person
 - ระบบต้องคำนวณอายุจาก ปีปัจจุบัน - ปีเกิด
@@ -104,9 +105,13 @@ add(person: Person) {
   );
 }
 
+
 หลังจากประกอบ API และหน้าเว็บสำเร็จก็ทำการเทสอีกรอบ
 ด้วยการเปิดใช้งาน API ที่ .\TCC-Site-Thaibev\No1\TCC No1 Test\ ด้วยคำสั่ง dotnet run
+
 และเปิดหน้าเว็บที่ .\TCC-Site-Thaibev\No1\TCC No1 Test\tcc-ui\ ด้วยคำสั่ง ng nerve
+
+
 
 ผมเริ่มวิเคราะห์ข้อ No2
 Functional
