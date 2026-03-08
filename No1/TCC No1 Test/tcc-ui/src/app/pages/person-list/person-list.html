@@ -1,7 +1,7 @@
 <div class="page">
 
   <div class="header">
-    IT 01-1
+    IT 01-{{modal}}
   </div>
 
   <div class="container">
@@ -24,10 +24,9 @@
       </thead>
 
       <tbody>
+        <tr *ngFor="let p of persons$ | async; let i = index">
 
-        <tr *ngFor="let p of persons; let i = index">
-
-          <td>{{ i + 1 }}</td>
+          <td>{{getRunning(i)}}</td>
 
           <td>
             {{p.firstName}} {{p.lastName}}
@@ -61,9 +60,112 @@
 
       <button (click)="prevPage()">Previous</button>
 
-      <span>Page {{page}}</span>
+      <span>   Page {{page}}   </span>
 
       <button (click)="nextPage()">Next</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="modal-backdrop" *ngIf="showModal">
+
+  <div class="modal-box">
+
+    <h3 *ngIf="modalMode === 'view'">IT 01-3</h3>
+    <h3 *ngIf="modalMode === 'add'">IT 01-2</h3>
+
+    <div class="form-row">
+
+      <label>ชื่อ - สกุล</label>
+
+      <div class="name-row">
+
+        <input type="text"
+               *ngIf="modalMode==='view'"
+               [value]="selectedPerson?.firstName"
+               readonly>
+
+        <input type="text"
+               *ngIf="modalMode==='view'"
+               [value]="selectedPerson?.lastName"
+               readonly>
+
+        <input type="text"
+               *ngIf="modalMode==='add'"
+               [(ngModel)]="newPerson.firstName">
+
+        <input type="text"
+               *ngIf="modalMode==='add'"
+               [(ngModel)]="newPerson.lastName">
+
+      </div>
+
+    </div>
+
+    <div class="form-row">
+
+      <label>วันเกิด</label>
+
+      <input type="date"
+             *ngIf="modalMode==='view'"
+             [value]="selectedPerson?.birthDate | date:'yyyy-MM-dd'"
+             readonly>
+
+      <input type="date"
+             *ngIf="modalMode==='add'"
+             [(ngModel)]="newPerson.birthDate">
+
+    </div>
+
+    <div class="form-row">
+
+      <label>อายุ</label>
+
+      <span *ngIf="modalMode==='view'">
+        {{getAge(selectedPerson?.birthDate)}} ปี
+      </span>
+
+      <span *ngIf="modalMode==='add'">
+        {{getAge(newPerson.birthDate)}} ปี
+      </span>
+
+    </div>
+
+    <div class="form-row">
+
+      <label>ที่อยู่</label>
+
+<textarea *ngIf="modalMode==='view'" readonly>
+
+{{selectedPerson?.address}}
+
+</textarea>
+
+<textarea *ngIf="modalMode==='add'"
+          [(ngModel)]="newPerson.address">
+</textarea>
+
+    </div>
+
+    <div class="btn-row">
+
+      <button *ngIf="modalMode==='add'"
+              class="btn-save"
+              (click)="savePerson()">
+
+        บันทึก
+
+      </button>
+
+      <button class="btn-close"
+              (click)="closeModal()">
+
+        {{modalMode === 'view' ? 'ปิด' : 'ยกเลิก'}}
+
+      </button>
 
     </div>
 

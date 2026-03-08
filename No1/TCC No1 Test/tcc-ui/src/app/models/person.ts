@@ -1,10 +1,7 @@
 export interface Person {
 
-  id: string
   firstName: string
   lastName: string
   address: string
-  birthDate: Date
-  age: number
-
+  birthDate: string
 }

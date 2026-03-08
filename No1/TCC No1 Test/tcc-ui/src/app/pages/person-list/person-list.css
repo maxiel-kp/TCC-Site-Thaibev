@@ -1,6 +1,7 @@
-.page {
-  background: #e5e5e5;
-  padding: 40px;
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #dcdcdc;
 }
 
 .header {
@@ -9,11 +10,6 @@
   text-align: center;
   font-weight: bold;
   padding: 8px;
-}
-
-.container {
-  background: #dcdcdc;
-  padding: 40px;
 }
 
 .toolbar {
@@ -55,4 +51,68 @@
   border: none;
   padding: 5px 12px;
   border-radius: 6px;
+}
+
+.page {
+  background: #e5e5e5;
+  padding: 40px;
+  text-align: center;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: #eee;
+  padding: 30px;
+  width: 500px;
+  border: 2px solid #999;
+}
+
+.form-row {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+  .form-row label {
+    width: 80px;
+  }
+
+.name-row {
+  display: flex;
+  gap: 10px;
+}
+
+input {
+  padding: 6px;
+  border: 1px solid #999;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+  border: 1px solid #999;
+}
+
+.btn-row {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.btn-close {
+  background: red;
+  color: white;
+  border: none;
+  padding: 8px 20px;
 }
